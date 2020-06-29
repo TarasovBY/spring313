@@ -1,0 +1,84 @@
+.content {
+  background: black;
+}
+.content .header {
+  display: flex;
+  justify-content: space-between;
+}
+.content .header a {
+  color: darkgrey;
+  margin: 10px;
+  text-decoration: none;
+}
+.content .header .header-inf {
+  display: flex;
+}
+.content .header .header-inf .roles {
+  text-transform: uppercase;
+}
+.content .header .header-inf .headName {
+  font-weight: 700;
+}
+.content .header .header-inf p {
+  margin: 10px 0 10px 0;
+  color: white;
+}
+.content2 {
+  padding: 0;
+  display: flex;
+  height: 100vh;
+}
+.content2 .menuleft {
+  padding: 0;
+}
+.content2 .menuleft .links {
+  display: flex;
+  margin-top: 10px;
+}
+.content2 .menuleft .links a {
+  color: white;
+  text-decoration: none;
+}
+.content2 .menuleft .obert .nonActive {
+  background-color: white;
+  border-color: white;
+}
+.content2 .menuleft .obert .nonActive a {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+.content2 .contentrich {
+  background: #f5f5f5;
+}
+.content2 .contentrich h1 {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.content2 .contentrich .myTitle {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+.content2 .contentrich .myTitle p {
+  margin: 0;
+  color: black;
+  font-weight: 600;
+  margin-left: 11px;
+}
+.content2 .contentrich .myTable {
+  background: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+.content2 .contentrich .myTable .table {
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
+.content2 .contentrich .myTable .table tr .roleTable {
+  display: flex;
+}
+.content2 .contentrich .myTable .table tr .roleTable p {
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=styleuser.css.map */

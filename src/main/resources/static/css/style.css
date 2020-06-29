@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.container .forms-login {
+  margin-top: 100px;
+}
+.container .forms-login .btn {
+  margin-top: 10px;
+}
+/*# sourceMappingURL=style.css.map */
