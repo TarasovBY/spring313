@@ -21,28 +21,14 @@ import java.util.Objects;
 @RequestMapping("/")
 public class CrudController {
 
-    private final UserServiceImp service;
-    private final PasswordEncoder encoder;
-    private final CrudSupporting crudSupporting;
-
-
-    @Autowired
-    public CrudController(UserServiceImp service, PasswordEncoder encoder, CrudSupporting crudSupporting){
-        this.encoder = encoder;
-        this.service = service;
-        this.crudSupporting = crudSupporting;
-    }
-
     @GetMapping("/")
     public String getHome(){
         return "redirect:/login";
     }
 
     @GetMapping(value = "/admin")
-    public String getPageAdmin(ModelMap modelMap) {
-        User user;
-        user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        modelMap.addAttribute("userSolo", user);
+    public String getPageAdmin() {
+
         return "pageadmin";
     }
 
@@ -53,10 +39,8 @@ public class CrudController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String userPage(ModelMap modelMap) {
-        User user;
-        user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        modelMap.addAttribute("userSolo", user);
+    public String userPage() {
+
         return "user";
     }
 

@@ -22,7 +22,7 @@ public class CrudSupporting {
     public Set<Role> createRole(WebRequest webRequest) {
         Set<Role> roleList = new HashSet<>();
         for(int a = 0; a < Objects.requireNonNull(webRequest.getParameterValues("roles")).length; a++ ) {
-            roleList.add(roleServiceImp.findRoleByRole(Objects
+            roleList.add(roleServiceImp.findRoleByName(Objects
                     .requireNonNull(webRequest.getParameterValues("roles"))[a]));
         }
         return roleList;
@@ -31,14 +31,14 @@ public class CrudSupporting {
     public Set<Role> createRoleForms(WebRequest webRequest) {
         Set<Role> roleList = new HashSet<>();
         if(webRequest.getParameter("roles").equals("Admin")) {
-            roleList.add(roleServiceImp.findRoleByRole("Admin"));
+            roleList.add(roleServiceImp.findRoleByName("Admin"));
         }
         else if(webRequest.getParameter("roles").equals("User")) {
-            roleList.add(roleServiceImp.findRoleByRole("User"));
+            roleList.add(roleServiceImp.findRoleByName("User"));
         }
         else {
-            roleList.add(roleServiceImp.findRoleByRole("User"));
-            roleList.add(roleServiceImp.findRoleByRole("Admin"));
+            roleList.add(roleServiceImp.findRoleByName("User"));
+            roleList.add(roleServiceImp.findRoleByName("Admin"));
         }
         return roleList;
     }

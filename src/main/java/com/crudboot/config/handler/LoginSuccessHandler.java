@@ -26,7 +26,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         User user = (User) authentication.getPrincipal();
         for (Role role: user.getRole()) {
-            if(role.getRole().equals("Admin")) {
+            if(role.getName().equals("Admin")) {
                 isAdmin = true;
             }
             else {

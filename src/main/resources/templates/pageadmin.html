@@ -10,30 +10,27 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
 <div class="content container-fluid">
     <div class="header">
         <div class="header-inf">
-            <p class="headName" th:text="${userSolo.getName() + '&#160'}"></p>
+            <p id="currentUserName" class="headName"></p>
             <p>with roles: &#160</p>
-            <p class="roles" th:each="roles : ${userSolo.getRole()}" th:text="${roles.getRole() + '&#160'}"></p>
+            <p id="currentUserRoles" class="roles"></p>
+            <p id="idUser" hidden="hidden"></p>
         </div>
         <a href="/logout">Logout</a>
     </div>
 </div>
 <div class="content2">
     <div class="menuleft col-2">
-        <div th:each="roles : ${userSolo.getRole()}" class="obert">
-            <div th:if="${roles.getRole() eq 'Admin'}" class="links btn btn-large btn-primary col-12">
-                <a th:href="admin">Admin</a>
-            </div>
-            <div th:if="${roles.getRole() eq 'User'}" class="nonActive links btn btn-large btn-primary col-12">
-                <a th:href="user">User</a>
-            </div>
-        </div>
+        <div id="entytyDasten" class="obert">
 
+
+        </div>
 
     </div>
     <div class="contentrich col-10">
@@ -44,7 +41,6 @@
                    aria-controls="nav-home" aria-selected="true">Users table</a>
                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
                    aria-controls="nav-profile" aria-selected="false">New User</a>
-
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -66,95 +62,6 @@
                         </tr>
                         </thead>
                         <tbody id="allTable">
-                        <script>
-                            $.ajax("/rest/user/all", {
-
-                                success: function (msg) { //msg - то, что придет с сервера, респонз
-                                    msg.forEach(function (user) {
-                                        let stringRoles = '';
-                                        user.role.forEach(function (role, index) {
-                                            stringRoles += role.role + " ";
-                                        });
-                                        $('#allTable').append(`<tr>
-                            <td class="table-secondary">${user.id}</td>
-                            <td class="table-secondary">${user.name}</td>
-                            <td class="table-secondary">${user.telephone}</td>
-                            <td class="table-secondary">${user.password}</td>
-                            <td class="table-secondary roleTable" id="rolesTables">
-                                <p>${stringRoles}</p>
-                            </td>
-                            <td class="table-secondary">
-
-                                <button type="button" onclick="
-$.get( '/rest/user/${user.id}', function( user ) {
-  $('#editFormiddis').val(user.id);
-  $('#editFormid').val(user.id);
-  $('#editFormname').val(user.name);
-  $('#editFormtelephone').val(user.telephone);
-  $('#editFormpassword').val(user.password);
-  user.role.forEach(function(role, index) {
-
-      if(role.role === 'Admin') {
-        $('#editFormrolesAdmin').attr('selected', 'selected')
-      }
-      else if(role.role === 'User') {
-        $('#editFormrolesUser').attr('selected', 'selected')
-      }
-
-
-                            });
-});
-
-
-" class="btn btn-info" data-toggle="modal" data-target="#exampleModalUpdate">
-                                    Edit
-                                </button>
-                            </td>
-                            <td class="table-secondary">
-                                <!-- Модальное окно удалить юзера -->
-                                <div class="modal fade" id="exampleModalDelete${user.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Delete user</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modalAdmin modal-body">
-                                                <p>ID</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.id}">
-                                                <p>Name</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.name}">
-                                                <p>Telephone</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.telephone}">
-                                                <p>Roles</p>
-                                                <select class="form-control" disabled="disabled" multiple size="2" name="roles">
-                                                    <option name="admin">Admin</option>
-                                                    <option name="user">User</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <form>
-                                                    <input class="idUser" type="hidden" id="delll${user.id}" name="id" value="${user.id}">
-                                                    <input type="button" value="Delete" data-dismiss="modal" name="${user.id}" class="btn btn-danger buttonDeleteButton">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalDelete${user.id}">
-                                    Delete
-                                </button>
-                            </td>
-
-                        </tr>`);
-                                    })
-
-                                }
-                            })
-                        </script>
 
                         </tbody>
                     </table>
@@ -183,117 +90,7 @@ $.get( '/rest/user/${user.id}', function( user ) {
                                 </select>
                                 <input id="userAdd" type="button" value="Add new user" class="btn btn-success">
                             </form>
-                            <script>
-                                let buttonEdit = $("#userAdd");
-                                buttonEdit.click(
-                                    function () {
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "/rest/user/add",
-                                            data: {
-                                                name: $('#name').val(),
-                                                telephone: $("#telephone").val(),
-                                                password: $("#password").val(),
-                                                roles: $("#roles option:selected").text()
-                                            },
-                                            success: function (msg) {
-                                                $("#allTable").empty();
-                                                $.ajax("/rest/user/all", {
 
-                                                    success: function (msg) { //msg - то, что придет с сервера, респонз
-                                                        msg.forEach(function (user) {
-                                                            let stringRoles = '';
-                                                            user.role.forEach(function (role, index) {
-                                                                stringRoles += role.role + " ";
-                                                            });
-                                                            $('#allTable').append(`<tr>
-                            <td class="table-secondary">${user.id}</td>
-                            <td class="table-secondary">${user.name}</td>
-                            <td class="table-secondary">${user.telephone}</td>
-                            <td class="table-secondary">${user.password}</td>
-                            <td class="table-secondary roleTable" id="rolesTables">
-                                <p>${stringRoles}</p>
-                            </td>
-                            <td class="table-secondary">
-
-                                <button type="button" onclick="
-$.get( '/rest/user/${user.id}', function( user ) {
-  $('#editFormiddis').val(user.id);
-  $('#editFormid').val(user.id);
-  $('#editFormname').val(user.name);
-  $('#editFormtelephone').val(user.telephone);
-  $('#editFormpassword').val(user.password);
-  user.role.forEach(function(role, index) {
-
-      if(role.role === 'Admin') {
-        $('#editFormrolesAdmin').attr('selected', 'selected')
-      }
-      else if(role.role === 'User') {
-        $('#editFormrolesUser').attr('selected', 'selected')
-      }
-
-
-                            });
-});
-
-
-" class="btn btn-info" data-toggle="modal" data-target="#exampleModalUpdate">
-                                    Edit
-                                </button>
-                            </td>
-                            <td class="table-secondary">
-                                <!-- Модальное окно удалить юзера -->
-                                <div class="modal fade" id="exampleModalDelete${user.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Delete user</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modalAdmin modal-body">
-                                                <p>ID</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.id}">
-                                                <p>Name</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.name}">
-                                                <p>Telephone</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.telephone}">
-                                                <p>Roles</p>
-                                                <select class="form-control" disabled="disabled" multiple size="2" name="roles">
-                                                    <option name="admin">Admin</option>
-                                                    <option name="user">User</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <form>
-                                                    <input class="idUser" type="hidden" id="delll${user.id}" name="id" value="${user.id}">
-                                                    <input type="button" value="Delete" data-dismiss="modal" name="${user.id}" class="btn btn-danger buttonDeleteButton">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalDelete${user.id}">
-                                    Delete
-                                </button>
-                            </td>
-
-                        </tr>`);
-                                                        })
-
-                                                    }
-                                                })
-                                                $('[href="#nav-home"]').tab('show');
-                                            },
-
-                                            dataType: "text"
-                                        });
-                                    }
-                                )
-
-                            </script>
                         </div>
                     </table>
                 </div>
@@ -302,116 +99,12 @@ $.get( '/rest/user/${user.id}', function( user ) {
 
     </div>
 </div>
-<script>
-    $(document).on('click', '.buttonDeleteButton', function () {
-        let id = "/rest/user/delete/" + $(this).attr("name");
-        $.ajax(id, {
-            method: "DELETE",
-
-
-            success: function (msg) {
-                $("#allTable").empty();
-                $.ajax("/rest/user/all", {
-
-                    success: function (msg) { //msg - то, что придет с сервера, респонз
-                        msg.forEach(function (user) {
-                            let stringRoles = '';
-                            user.role.forEach(function (role, index) {
-                                stringRoles += role.role + " ";
-                            });
-                            $('#allTable').append(`<tr>
-                            <td class="table-secondary">${user.id}</td>
-                            <td class="table-secondary">${user.name}</td>
-                            <td class="table-secondary">${user.telephone}</td>
-                            <td class="table-secondary">${user.password}</td>
-                            <td class="table-secondary roleTable" id="rolesTables">
-                                <p>${stringRoles}</p>
-                            </td>
-                            <td class="table-secondary">
-
-                                <button type="button" onclick="
-$.get( '/rest/user/${user.id}', function( user ) {
-  $('#editFormiddis').val(user.id);
-  $('#editFormid').val(user.id);
-  $('#editFormname').val(user.name);
-  $('#editFormtelephone').val(user.telephone);
-  $('#editFormpassword').val(user.password);
-  user.role.forEach(function(role, index) {
-
-      if(role.role === 'Admin') {
-        $('#editFormrolesAdmin').attr('selected', 'selected')
-      }
-      else if(role.role === 'User') {
-        $('#editFormrolesUser').attr('selected', 'selected')
-      }
-
-
-                            });
-});
-
-
-" class="btn btn-info" data-toggle="modal" data-target="#exampleModalUpdate">
-                                    Edit
-                                </button>
-                            </td>
-                            <td class="table-secondary">
-                                <!-- Модальное окно удалить юзера -->
-                                <div class="modal fade" id="exampleModalDelete${user.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Delete user</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modalAdmin modal-body">
-                                                <p>ID</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.id}">
-                                                <p>Name</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.name}">
-                                                <p>Telephone</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.telephone}">
-                                                <p>Roles</p>
-                                                <select class="form-control" disabled="disabled" multiple size="2" name="roles">
-                                                    <option name="admin">Admin</option>
-                                                    <option name="user">User</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <form>
-                                                    <input class="idUser" type="hidden" id="delll${user.id}" name="id" value="${user.id}">
-                                                    <input type="button" value="Delete" data-dismiss="modal" name="${user.id}" class="btn btn-danger buttonDeleteButton">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalDelete${user.id}">
-                                    Delete
-                                </button>
-                            </td>
-
-                        </tr>`);
-                        })
-
-                    }
-                })
-                document.getElementsByClassName('modal-backdrop')[0].remove();
-
-            }
-        })
-    })
-</script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
 <div class="modal fade" id="exampleModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -449,118 +142,5 @@ $.get( '/rest/user/${user.id}', function( user ) {
         </div>
     </div>
 </div>
-<script>
-
-    $("#buttonEditUser").click(
-        function () {
-
-            $.ajax({
-                url: '/rest/user/edit/',
-                type: 'PUT',
-                data: {
-                    id: $('#editFormid').val(),
-                    name: $('#editFormname').val(),
-                    telephone: $("#editFormtelephone").val(),
-                    password: $("#editFormpassword").val(),
-                    roles: $("#editFormroles option:selected").text()
-                },
-                success: function (data) {
-
-                    $("#allTable").empty();
-                    $.ajax("/rest/user/all", {
-
-                        success: function (msg) { //msg - то, что придет с сервера, респонз
-                            msg.forEach(function (user) {
-                                let stringRoles = '';
-                                user.role.forEach(function (role, index) {
-                                    stringRoles += role.role + " ";
-                                });
-                                $('#allTable').append(`<tr>
-                            <td class="table-secondary">${user.id}</td>
-                            <td class="table-secondary">${user.name}</td>
-                            <td class="table-secondary">${user.telephone}</td>
-                            <td class="table-secondary">${user.password}</td>
-                            <td class="table-secondary roleTable" id="rolesTables">
-                                <p>${stringRoles}</p>
-                            </td>
-                            <td class="table-secondary">
-
-                                <button type="button" onclick="
-$.get( '/rest/user/${user.id}', function( user ) {
-  $('#editFormiddis').val(user.id);
-  $('#editFormid').val(user.id);
-  $('#editFormname').val(user.name);
-  $('#editFormtelephone').val(user.telephone);
-  $('#editFormpassword').val(user.password);
-  user.role.forEach(function(role, index) {
-
-      if(role.role === 'Admin') {
-        $('#editFormrolesAdmin').attr('selected', 'selected')
-      }
-      else if(role.role === 'User') {
-        $('#editFormrolesUser').attr('selected', 'selected')
-      }
-
-
-                            });
-});
-
-
-" class="btn btn-info" data-toggle="modal" data-target="#exampleModalUpdate">
-                                    Edit
-                                </button>
-                            </td>
-                            <td class="table-secondary">
-                                <!-- Модальное окно удалить юзера -->
-                                <div class="modal fade" id="exampleModalDelete${user.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Delete user</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modalAdmin modal-body">
-                                                <p>ID</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.id}">
-                                                <p>Name</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.name}">
-                                                <p>Telephone</p>
-                                                <input class="form-control" disabled="disabled" type="text" value="${user.telephone}">
-                                                <p>Roles</p>
-                                                <select class="form-control" disabled="disabled" multiple size="2" name="roles">
-                                                    <option name="admin">Admin</option>
-                                                    <option name="user">User</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <form>
-                                                    <input class="idUser" type="hidden" id="delll${user.id}" name="id" value="${user.id}">
-                                                    <input type="button" value="Delete" data-dismiss="modal" name="${user.id}" class="btn btn-danger buttonDeleteButton">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalDelete${user.id}">
-                                    Delete
-                                </button>
-                            </td>
-
-                        </tr>`);
-                            })
-
-                        }
-                    })
-
-                }
-            });
-        }
-    )
-
-
-</script>
 </body>
 </html>

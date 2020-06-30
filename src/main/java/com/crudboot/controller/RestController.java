@@ -1,10 +1,10 @@
 package com.crudboot.controller;
 
 import com.crudboot.model.User;
-import com.crudboot.repository.UserRepository;
 import com.crudboot.service.UserServiceImp;
 import com.crudboot.util.CrudSupporting;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -62,5 +62,10 @@ public class RestController {
         user.setRole(crudSupporting.createRoleForms(webRequest));
         user.setPassword(encoder.encode(webRequest.getParameter("password")));
         service.saveAndFlush(user);
+    }
+
+    @GetMapping(value = "/rest/user/current")
+    public User currentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }
