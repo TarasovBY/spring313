@@ -97,7 +97,6 @@ $.get( '/rest/user/${user.id}', function( user ) {
     })
 }
 
-
 //добовляем нового юзера
 var addUser = function() {
     $("#userAdd").click(
