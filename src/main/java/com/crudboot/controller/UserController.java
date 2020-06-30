@@ -19,7 +19,7 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/")
-public class CrudController {
+public class UserController {
 
     @GetMapping("/")
     public String getHome(){
