@@ -24,7 +24,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2690d0b-dba1-4b1a-9e3b-d4545674386c" name="Default Changelist" comment="рефакторинг" />
+    <list default="true" id="f2690d0b-dba1-4b1a-9e3b-d4545674386c" name="Default Changelist" comment="рефакторинг">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/crudboot/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/crudboot/service/RoleServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/crudboot/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/crudboot/service/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/crudboot/controller/CrudController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/crudboot/controller/CrudController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/crudboot/controller/RestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/crudboot/controller/RestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/crudboot/util/CrudSupporting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/crudboot/util/CrudSupporting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styleadmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styleadmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styleadmin.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styleadmin.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styleadmin.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styleadmin.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,8 +50,8 @@
         <option value="Interface" />
         <option value="HTML File" />
         <option value="Less File" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,7 +87,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../2.4.1" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -215,6 +229,7 @@
       <workItem from="1593358161810" duration="103000" />
       <workItem from="1593364725664" duration="46149000" />
       <workItem from="1593466041485" duration="13000" />
+      <workItem from="1593504545590" duration="7247000" />
     </task>
     <task id="LOCAL-00001" summary="рефакторинг">
       <created>1592951253495</created>
@@ -282,10 +297,10 @@
     </state>
     <state x="327" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1592657065117" />
     <state x="368" y="25" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1593358264912" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1593337552209">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1593507492865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1593337552209" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1593507492865" />
     <state x="643" y="160" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1593358222910">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -314,11 +329,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="316" y="133" width="660" height="678" key="EditFileWatcherDialog/0.0.1536.824@0.0.1536.824" timestamp="1593025419220" />
-    <state x="521" y="134" key="FileChooserDialogImpl" timestamp="1593347422779">
+    <state x="521" y="134" key="FileChooserDialogImpl" timestamp="1593505147273">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592657748850" />
-    <state x="521" y="134" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593347422779" />
+    <state x="521" y="134" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593505147273" />
     <state x="629" y="310" key="Github.ShareDialog" timestamp="1593465934116">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -327,46 +342,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="110" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593194113544" />
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1593466001742">
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592685374992" />
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593466001742" />
-    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1593466001742">
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
+    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592685374991" />
-    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593466001742" />
-    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1593466001742">
+    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
+    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592685374991" />
-    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593466001742" />
-    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1593466001742">
+    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
+    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592685374991" />
-    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593466001742" />
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1593466001743">
+    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592685312750" />
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593466001743" />
-    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1593466001742">
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
+    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1592685312750" />
-    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593466001742" />
-    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1593466001742">
+    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
+    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1592685312749" />
-    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593466001742" />
-    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1593466001742">
+    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
+    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1593512348195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1592685312750" />
-    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593466001742" />
+    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593512348195" />
     <state width="1024" height="210" key="GridCell.Tab.2.bottom" timestamp="1593462310829">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -435,14 +450,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/crudboot/util/CrudSupporting.java</url>
-          <line>20</line>
-          <properties class="com.crudboot.util.CrudSupporting" method="createRole">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

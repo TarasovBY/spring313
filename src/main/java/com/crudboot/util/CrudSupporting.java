@@ -3,6 +3,7 @@ package com.crudboot.util;
 import com.crudboot.model.Role;
 import com.crudboot.repository.RoleRepository;
 import com.crudboot.repository.UserRepository;
+import com.crudboot.service.RoleServiceImp;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.WebRequest;
 import java.util.HashSet;
@@ -12,16 +13,16 @@ import java.util.Set;
 @Service
 public class CrudSupporting {
 
-    private final RoleRepository roleRepository;
+    private final RoleServiceImp roleServiceImp;
 
-    public CrudSupporting(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    public CrudSupporting(RoleServiceImp roleServiceImp) {
+        this.roleServiceImp = roleServiceImp;
     }
 
     public Set<Role> createRole(WebRequest webRequest) {
         Set<Role> roleList = new HashSet<>();
         for(int a = 0; a < Objects.requireNonNull(webRequest.getParameterValues("roles")).length; a++ ) {
-            roleList.add(roleRepository.findRoleByRole(Objects
+            roleList.add(roleServiceImp.findRoleByRole(Objects
                     .requireNonNull(webRequest.getParameterValues("roles"))[a]));
         }
         return roleList;
@@ -30,14 +31,14 @@ public class CrudSupporting {
     public Set<Role> createRoleForms(WebRequest webRequest) {
         Set<Role> roleList = new HashSet<>();
         if(webRequest.getParameter("roles").equals("Admin")) {
-            roleList.add(roleRepository.findRoleByRole("Admin"));
+            roleList.add(roleServiceImp.findRoleByRole("Admin"));
         }
         else if(webRequest.getParameter("roles").equals("User")) {
-            roleList.add(roleRepository.findRoleByRole("User"));
+            roleList.add(roleServiceImp.findRoleByRole("User"));
         }
         else {
-            roleList.add(roleRepository.findRoleByRole("User"));
-            roleList.add(roleRepository.findRoleByRole("Admin"));
+            roleList.add(roleServiceImp.findRoleByRole("User"));
+            roleList.add(roleServiceImp.findRoleByRole("Admin"));
         }
         return roleList;
     }

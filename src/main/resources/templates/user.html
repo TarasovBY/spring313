@@ -18,6 +18,7 @@
             <p class="headName" th:text="${userSolo.getName() + '&#160'}"></p>
             <p>with roles: &#160</p>
             <p class="roles" th:each="roles : ${userSolo.getRole()}" th:text="${roles.getRole() + '&#160'}"></p>
+            <p id="idUser" hidden="hidden" th:text="${userSolo.getId()}"></p>
         </div>
         <a href="/logout">Logout</a>
     </div>
@@ -53,7 +54,8 @@
                 </thead>
                 <tbody id="tableUser">
                 <script>
-                    $.ajax("/rest/user/1", {
+                    let idUser = $('#idUser').text();
+                    $.ajax("/rest/user/" + idUser, {
 
                         success: function (msg) { //msg - то, что придет с сервера, респонз
                             let stringRoles = '';

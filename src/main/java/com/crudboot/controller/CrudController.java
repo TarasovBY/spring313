@@ -2,6 +2,7 @@ package com.crudboot.controller;
 
 import com.crudboot.model.User;
 import com.crudboot.repository.UserRepository;
+import com.crudboot.service.UserServiceImp;
 import com.crudboot.util.CrudSupporting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,13 +21,13 @@ import java.util.Objects;
 @RequestMapping("/")
 public class CrudController {
 
-    private final UserRepository service;
+    private final UserServiceImp service;
     private final PasswordEncoder encoder;
     private final CrudSupporting crudSupporting;
 
 
     @Autowired
-    public CrudController(UserRepository service, PasswordEncoder encoder, CrudSupporting crudSupporting){
+    public CrudController(UserServiceImp service, PasswordEncoder encoder, CrudSupporting crudSupporting){
         this.encoder = encoder;
         this.service = service;
         this.crudSupporting = crudSupporting;
@@ -39,43 +40,12 @@ public class CrudController {
 
     @GetMapping(value = "/admin")
     public String getPageAdmin(ModelMap modelMap) {
-        modelMap.addAttribute("users", service.findAll());
         User user;
         user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         modelMap.addAttribute("userSolo", user);
         return "pageadmin";
     }
 
-    @RequestMapping(value = "/admin/adduser", method = RequestMethod.POST)
-    public String getAddUser(WebRequest webRequest) {
-        User user = new User();
-        user.setName(webRequest.getParameter("name"));
-        user.setTelephone(webRequest.getParameter("telephone"));
-        user.setRole(crudSupporting.createRole(webRequest));
-        user.setPassword(encoder.encode(webRequest.getParameter("password")));
-        service.save(user);
-        return "redirect:/admin";
-    }
-
-    @RequestMapping(value = "/admin/deleteuser", method = RequestMethod.POST)
-    public String getDeleteUser(WebRequest webRequest) {
-        User user = new User();
-        user.setId(Integer.parseInt(Objects.requireNonNull(webRequest.getParameter("id"))));
-        service.delete(user);
-        return "redirect:/admin";
-    }
-
-    @RequestMapping(value = "/admin/updateuser", method = RequestMethod.POST)
-    public String getUpdateUser(WebRequest webRequest) {
-        User user = new User();
-        user.setId(Integer.parseInt(Objects.requireNonNull(webRequest.getParameter("id"))));
-        user.setName(webRequest.getParameter("name"));
-        user.setTelephone(webRequest.getParameter("telephone"));
-        user.setRole(crudSupporting.createRole(webRequest));
-        user.setPassword(webRequest.getParameter("password"));
-        service.saveAndFlush(user);
-        return "redirect:/admin";
-    }
 
     @GetMapping(value = "login")
     public String loginPage() {

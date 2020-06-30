@@ -2,6 +2,7 @@ package com.crudboot.controller;
 
 import com.crudboot.model.User;
 import com.crudboot.repository.UserRepository;
+import com.crudboot.service.UserServiceImp;
 import com.crudboot.util.CrudSupporting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,12 +16,12 @@ import java.util.Optional;
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
-    private final UserRepository service;
+    private final UserServiceImp service;
     private final PasswordEncoder encoder;
     private final CrudSupporting crudSupporting;
 
     @Autowired
-    public RestController(UserRepository service, PasswordEncoder encoder, CrudSupporting crudSupporting) {
+    public RestController(UserServiceImp service, PasswordEncoder encoder, CrudSupporting crudSupporting) {
         this.service = service;
         this.encoder = encoder;
         this.crudSupporting = crudSupporting;
